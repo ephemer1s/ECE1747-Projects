@@ -1,4 +1,11 @@
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_BUILD_TYPE Debug)
-add_executable(parallel ParallelMazeSolver.cpp)
-add_executable(original OriginalMazeSolver.cpp)
+cmake_minimum_required(VERSION 3.10)  # CMake version check
+project(mazeSolver)               # Create project "simple_example"
+set(CMAKE_CXX_STANDARD 11)            # Enable c++14 standard
+
+# Add main.cpp file of project root directory as source file
+set(ORIGINAL OriginalMazeSolver.cpp)
+set(PARALLEL ParallelMazeSolver.cpp)
+
+# Add executable target with source files listed in SOURCE_FILES variable
+add_executable(mazeSolver ${ORIGINAL})
+add_executable(mazeSolver ${PARALLEL})
