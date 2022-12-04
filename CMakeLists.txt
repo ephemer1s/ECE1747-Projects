@@ -7,5 +7,5 @@ set(ORIGINAL OriginalMazeSolver.cpp)
 set(PARALLEL ParallelMazeSolver.cpp)
 
 # Add executable target with source files listed in SOURCE_FILES variable
-add_executable(mazeSolver ${ORIGINAL})
-add_executable(mazeSolver ${PARALLEL})
+add_executable(sequential ${ORIGINAL})
+add_executable(parallel ${PARALLEL})
