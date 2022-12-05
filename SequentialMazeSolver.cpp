@@ -72,7 +72,7 @@ int main()
 {
 	//required variables
 	ifstream in;
-	in.open("sample_mazes/Maze.txt");
+	in.open("sample_mazes/maze.txt");
 	char line;
 
 	//read the matrix using plain c code, character by character
@@ -113,6 +113,9 @@ int main()
 
 	//Call a recursive mazeSolver
 
+	// cout << "current x : " << x << endl << endl;
+	// cout << "current y : " << y << endl << endl;
+
 	double bfStart = getUnixTime();
 	int bfDistance = bruteForceMazeSolver(x,y);
 	double bfStop = getUnixTime();
@@ -122,6 +125,25 @@ int main()
 	cout << "Brute force time: " << bfTime << " ms" << endl << endl;
 
 	//Print Brute Force Maze
+	for(int i=0; i<myMaze.rows; i++)
+	{
+		for(int j=0; j<myMaze.cols; j++)
+			cout << myMaze.matrix[i][j];
+		cout << endl;
+	}
+
+	// cout << "current x : " << x << endl << endl;
+	// cout << "current y : " << y << endl << endl;
+
+	double gStart = getUnixTime();
+	int gDistance = greedyMazeSolver(x,y);
+	double gStop = getUnixTime();
+	cout << gStart << "  " << gStop << endl<< endl;
+	double gTime = gStop-gStart; // CLOCKS_PER_SEC * 1000.0;
+	cout << "Greedy distance: " << gDistance << " units away!" << endl << endl;
+	cout << "Greedy time: " << gTime << " ms" << endl << endl;
+
+	//Print Greedy Maze
 	for(int i=0; i<myMaze.rows; i++)
 	{
 		for(int j=0; j<myMaze.cols; j++)
@@ -287,16 +309,277 @@ int bruteForceMazeSolver(int i, int j)
 
     return distance;
 }
+
 int backtrackingMazeSolver(int i, int j)
 {
     //algorithm goes here
     return -1;
 }
-int greedyMazeSolver(int i, int j)
+int greedyMazeSolver(int x, int y)
 {
     //algorithm goes here
-    return -1;
+	//something wrong with definition of x,y from original code, need to switch x,y here
+	int curr_x = y;
+    int curr_y = x;
+	int dest_x, dist_x = 0;
+	int dest_y, dist_y = 0;
+	enum Directs { UP, DOWN, LEFT, RIGHT};
+    int count = 0;
+    int distance =0;
+    stack<char> moves;
+
+	//Clear o's and find F
+	for(int i=0; i<myMaze.rows; i++){
+    	for(int j=0; j<myMaze.cols; j++){
+    		if(myMaze.matrix[i][j] == 'o'){
+    			myMaze.matrix[i][j] = ' ';
+    		}
+			if(myMaze.matrix[i][j] == 'F'){
+				dest_x = i;
+				dest_y = j;
+			}
+    	}
+    }
+
+	
+	while(myMaze.matrix[curr_x][curr_y] != 'F'){
+		Directs directs[4];
+		// int directs[4];
+		int next_xs[4];
+		int next_ys[4];
+		dist_x = dest_x - curr_x;
+		dist_y = dest_y - curr_y;
+		
+		//define direction order
+		if(abs(dist_x) > abs(dist_y)){
+			directs[0] = dist_x > 0 ? DOWN : UP;
+			directs[3] = dist_x > 0 ? UP : DOWN;
+			directs[1] = dist_y > 0 ? RIGHT : LEFT;
+			directs[2] = dist_y > 0 ? LEFT : RIGHT;
+		}else{
+			directs[0] = dist_y > 0 ? RIGHT : LEFT;
+			directs[3] = dist_y > 0 ? LEFT : RIGHT;
+			directs[1] = dist_x > 0 ? DOWN : UP;
+			directs[2] = dist_x > 0 ? UP : DOWN;
+		}
+
+		for(int i = 0; i < 4; i++){
+			switch(directs[i]){
+				case UP:
+					next_xs[i] = curr_x - 1;
+					next_ys[i] = curr_y;
+					break;
+				case DOWN:
+					next_xs[i] = curr_x + 1;
+					next_ys[i] = curr_y;
+					break;
+				case LEFT:
+					next_xs[i] = curr_x;
+					next_ys[i] = curr_y - 1;
+					break;
+				case RIGHT:
+					next_xs[i] = curr_x;
+					next_ys[i] = curr_y + 1;
+					break;
+				default:
+					cout << "No Such Direction! Cannot Insert Into next_xs & next_ys" << endl;
+			}
+		}
+
+
+    	//try going first direction
+    	if(myMaze.matrix[next_xs[0]][next_ys[0]] == ' ' || myMaze.matrix[next_xs[0]][next_ys[0]] == 'F'){
+    		//cout << directs[0] << endl;
+    		count ++;
+    		distance++;
+			curr_x = next_xs[0];
+    		curr_y = next_ys[0];
+    		if(myMaze.matrix[curr_x][curr_y] == 'F'){
+    			break;
+    		}
+			switch(directs[0]){
+				case UP:
+					moves.push('u');
+					break;
+				case DOWN:
+					moves.push('d');
+					break;
+				case LEFT:
+					moves.push('l');
+					break;
+				case RIGHT:
+					moves.push('r');
+					break;
+				default:
+					cout << "No Such Direction! Cannot Push Into Stack!" << endl;
+			}
+    		// moves.push(directs[0]);
+    		myMaze.matrix[curr_x][curr_y] = 'o';
+    	}
+
+    	//try going second direction
+    	else if(myMaze.matrix[next_xs[1]][next_ys[1]] == ' ' || myMaze.matrix[next_xs[1]][next_ys[1]] == 'F'){
+    		//cout << directs[1] << endl;
+    		count++;
+    		distance++;
+    		curr_x = next_xs[1];
+    		curr_y = next_ys[1];
+    		if(myMaze.matrix[curr_x][curr_y] == 'F'){
+    			break;
+    		}
+			switch(directs[1]){
+				case UP:
+					moves.push('u');
+					break;
+				case DOWN:
+					moves.push('d');
+					break;
+				case LEFT:
+					moves.push('l');
+					break;
+				case RIGHT:
+					moves.push('r');
+					break;
+				default:
+					cout << "No Such Direction! Cannot Push Into Stack!" << endl;
+			}
+    		// moves.push('u');
+    		myMaze.matrix[curr_x][curr_y] = 'o';
+    	}
+
+    	//try going third direction
+    	else if(myMaze.matrix[next_xs[2]][next_ys[2]] == ' ' || myMaze.matrix[next_xs[2]][next_ys[2]] == 'F'){
+    		//cout << directs[2] << endl;
+    		count++;
+    		distance++;
+    		curr_x = next_xs[2];
+    		curr_y = next_ys[2];
+    		if(myMaze.matrix[curr_x][curr_y] == 'F'){
+    			break;
+    		}
+			switch(directs[2]){
+				case UP:
+					moves.push('u');
+					break;
+				case DOWN:
+					moves.push('d');
+					break;
+				case LEFT:
+					moves.push('l');
+					break;
+				case RIGHT:
+					moves.push('r');
+					break;
+				default:
+					cout << "No Such Direction! Cannot Push Into Stack!" << endl;
+			}
+    		// moves.push('d');
+    		myMaze.matrix[curr_x][curr_y] = 'o';
+
+    	}
+
+    	//try going fourth direction
+    	else if(myMaze.matrix[next_xs[3]][next_ys[3]] == ' ' || myMaze.matrix[next_xs[3]][next_ys[3]] == 'F'){
+    		//cout << directs[3] << endl;
+			count++;
+    		distance++;
+    		curr_x = next_xs[3];
+    		curr_y = next_ys[3];
+    		if(myMaze.matrix[curr_x][curr_y] == 'F'){
+    			break;
+    		}
+			switch(directs[3]){
+				case UP:
+					moves.push('u');
+					break;
+				case DOWN:
+					moves.push('d');
+					break;
+				case LEFT:
+					moves.push('l');
+					break;
+				case RIGHT:
+					moves.push('r');
+					break;
+				default:
+					cout << "No Such Direction! Cannot Push Into Stack!" << endl;
+			}
+    		// moves.push('l');
+			myMaze.matrix[curr_x][curr_y] = 'o';
+    	}
+
+
+    	//try backtracking right
+    	else if (moves.top() == 'l'){
+    		moves.pop();
+    		count++;
+    		distance--;
+    		if(myMaze.matrix[curr_x][curr_y] != 'S'){
+    			myMaze.matrix[curr_x][curr_y] = 'x';
+    		}
+    		curr_y++;
+    		//cout << "backtracked right" << endl;
+    	}
+
+    	//try backtracking up
+    	else if (moves.top() == 'd'){
+    		moves.pop();
+    		count++;
+    		distance--;
+    		if(myMaze.matrix[curr_x][curr_y] != 'S'){
+    			myMaze.matrix[curr_x][curr_y] = 'x';
+    		}
+    		curr_x--;
+    		//cout << "backtracked up" << endl;
+    	}
+
+    	//try backtracking down
+    	else if (moves.top() == 'u'){
+    		moves.pop();
+    		count++;
+    		distance--;
+    		if(myMaze.matrix[curr_x][curr_y] != 'S'){
+    			myMaze.matrix[curr_x][curr_y] = 'x';
+    		}
+    		curr_x++;
+    		//cout << "backtracked down" << endl;
+    	}
+
+    	//try backtracking left
+    	else if (moves.top() == 'r'){
+    		moves.pop();
+    		count++;
+    		distance--;
+    		if(myMaze.matrix[curr_x][curr_y] != 'S'){
+    			myMaze.matrix[curr_x][curr_y] = 'x';
+    		}
+    		curr_y--;
+    		//cout << "backtracked left" << endl;
+    	}
+
+    	else{
+    		cout << "Error: Maze Unsolvable" << endl;
+    		break;
+    	}
+
+		if(count > 500){
+    		break;
+    	}
+
+	}
+	//Clear X's
+    for(int k=0; k<myMaze.rows; k++){
+    	for(int h=0; h<myMaze.cols; h++){
+    		if(myMaze.matrix[k][h] == 'x'){
+    			myMaze.matrix[k][h] = ' ';
+    		}
+    	}
+    }
+
+    return distance;
+
 }
+
 int divideAndConquerMazeSolver(int i, int j)
 {
     //algorithm goes here
