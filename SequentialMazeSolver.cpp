@@ -397,23 +397,7 @@ int greedyMazeSolver(int x, int y)
     		if(myMaze.matrix[curr_x][curr_y] == 'F'){
     			break;
     		}
-			switch(directs[0]){
-				case UP:
-					moves.push('u');
-					break;
-				case DOWN:
-					moves.push('d');
-					break;
-				case LEFT:
-					moves.push('l');
-					break;
-				case RIGHT:
-					moves.push('r');
-					break;
-				default:
-					cout << "No Such Direction! Cannot Push Into Stack!" << endl;
-			}
-    		// moves.push(directs[0]);
+    		moves.push(directs[0]);
     		myMaze.matrix[curr_x][curr_y] = 'o';
     	}
 
@@ -427,23 +411,7 @@ int greedyMazeSolver(int x, int y)
     		if(myMaze.matrix[curr_x][curr_y] == 'F'){
     			break;
     		}
-			switch(directs[1]){
-				case UP:
-					moves.push('u');
-					break;
-				case DOWN:
-					moves.push('d');
-					break;
-				case LEFT:
-					moves.push('l');
-					break;
-				case RIGHT:
-					moves.push('r');
-					break;
-				default:
-					cout << "No Such Direction! Cannot Push Into Stack!" << endl;
-			}
-    		// moves.push('u');
+    		moves.push(directs[1]);
     		myMaze.matrix[curr_x][curr_y] = 'o';
     	}
 
@@ -457,23 +425,7 @@ int greedyMazeSolver(int x, int y)
     		if(myMaze.matrix[curr_x][curr_y] == 'F'){
     			break;
     		}
-			switch(directs[2]){
-				case UP:
-					moves.push('u');
-					break;
-				case DOWN:
-					moves.push('d');
-					break;
-				case LEFT:
-					moves.push('l');
-					break;
-				case RIGHT:
-					moves.push('r');
-					break;
-				default:
-					cout << "No Such Direction! Cannot Push Into Stack!" << endl;
-			}
-    		// moves.push('d');
+    		moves.push(directs[2]);
     		myMaze.matrix[curr_x][curr_y] = 'o';
 
     	}
@@ -488,29 +440,13 @@ int greedyMazeSolver(int x, int y)
     		if(myMaze.matrix[curr_x][curr_y] == 'F'){
     			break;
     		}
-			switch(directs[3]){
-				case UP:
-					moves.push('u');
-					break;
-				case DOWN:
-					moves.push('d');
-					break;
-				case LEFT:
-					moves.push('l');
-					break;
-				case RIGHT:
-					moves.push('r');
-					break;
-				default:
-					cout << "No Such Direction! Cannot Push Into Stack!" << endl;
-			}
-    		// moves.push('l');
+    		moves.push(directs[3]);
 			myMaze.matrix[curr_x][curr_y] = 'o';
     	}
 
 
     	//try backtracking right
-    	else if (moves.top() == 'l'){
+    	else if (moves.top() == LEFT){
     		moves.pop();
     		count++;
     		distance--;
@@ -522,7 +458,7 @@ int greedyMazeSolver(int x, int y)
     	}
 
     	//try backtracking up
-    	else if (moves.top() == 'd'){
+    	else if (moves.top() == DOWN){
     		moves.pop();
     		count++;
     		distance--;
@@ -534,7 +470,7 @@ int greedyMazeSolver(int x, int y)
     	}
 
     	//try backtracking down
-    	else if (moves.top() == 'u'){
+    	else if (moves.top() == UP){
     		moves.pop();
     		count++;
     		distance--;
@@ -546,7 +482,7 @@ int greedyMazeSolver(int x, int y)
     	}
 
     	//try backtracking left
-    	else if (moves.top() == 'r'){
+    	else if (moves.top() == RIGHT){
     		moves.pop();
     		count++;
     		distance--;
