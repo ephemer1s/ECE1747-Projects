@@ -129,17 +129,17 @@ sequential/fast:
 .PHONY : sequential/fast
 
 #=============================================================================
-# Target rules for targets named parallel
+# Target rules for targets named parallel_random
 
 # Build rule for target.
-parallel: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 parallel
-.PHONY : parallel
+parallel_random: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 parallel_random
+.PHONY : parallel_random
 
 # fast build rule for target.
-parallel/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\parallel.dir\build.make CMakeFiles/parallel.dir/build
-.PHONY : parallel/fast
+parallel_random/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\parallel_random.dir\build.make CMakeFiles/parallel_random.dir/build
+.PHONY : parallel_random/fast
 
 OriginalMazeSolver.obj: OriginalMazeSolver.cpp.obj
 .PHONY : OriginalMazeSolver.obj
@@ -165,29 +165,29 @@ OriginalMazeSolver.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\sequential.dir\build.make CMakeFiles/sequential.dir/OriginalMazeSolver.cpp.s
 .PHONY : OriginalMazeSolver.cpp.s
 
-ParallelMazeSolver.obj: ParallelMazeSolver.cpp.obj
-.PHONY : ParallelMazeSolver.obj
+parallel_random.obj: parallel_random.cpp.obj
+.PHONY : parallel_random.obj
 
 # target to build an object file
-ParallelMazeSolver.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\parallel.dir\build.make CMakeFiles/parallel.dir/ParallelMazeSolver.cpp.obj
-.PHONY : ParallelMazeSolver.cpp.obj
+parallel_random.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\parallel_random.dir\build.make CMakeFiles/parallel_random.dir/parallel_random.cpp.obj
+.PHONY : parallel_random.cpp.obj
 
-ParallelMazeSolver.i: ParallelMazeSolver.cpp.i
-.PHONY : ParallelMazeSolver.i
+parallel_random.i: parallel_random.cpp.i
+.PHONY : parallel_random.i
 
 # target to preprocess a source file
-ParallelMazeSolver.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\parallel.dir\build.make CMakeFiles/parallel.dir/ParallelMazeSolver.cpp.i
-.PHONY : ParallelMazeSolver.cpp.i
+parallel_random.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\parallel_random.dir\build.make CMakeFiles/parallel_random.dir/parallel_random.cpp.i
+.PHONY : parallel_random.cpp.i
 
-ParallelMazeSolver.s: ParallelMazeSolver.cpp.s
-.PHONY : ParallelMazeSolver.s
+parallel_random.s: parallel_random.cpp.s
+.PHONY : parallel_random.s
 
 # target to generate assembly for a file
-ParallelMazeSolver.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\parallel.dir\build.make CMakeFiles/parallel.dir/ParallelMazeSolver.cpp.s
-.PHONY : ParallelMazeSolver.cpp.s
+parallel_random.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\parallel_random.dir\build.make CMakeFiles/parallel_random.dir/parallel_random.cpp.s
+.PHONY : parallel_random.cpp.s
 
 # Help Target
 help:
@@ -197,14 +197,14 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... parallel
+	@echo ... parallel_random
 	@echo ... sequential
 	@echo ... OriginalMazeSolver.obj
 	@echo ... OriginalMazeSolver.i
 	@echo ... OriginalMazeSolver.s
-	@echo ... ParallelMazeSolver.obj
-	@echo ... ParallelMazeSolver.i
-	@echo ... ParallelMazeSolver.s
+	@echo ... parallel_random.obj
+	@echo ... parallel_random.i
+	@echo ... parallel_random.s
 .PHONY : help
 
 

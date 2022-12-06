@@ -63,7 +63,7 @@ CMAKE_BINARY_DIR = H:\Code\ECE1747\ECE1747-Projects\cmake-build-debug
 
 # The main recursive "all" target.
 all: CMakeFiles/sequential.dir/all
-all: CMakeFiles/parallel.dir/all
+all: CMakeFiles/parallel_random.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -72,7 +72,7 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles/sequential.dir/clean
-clean: CMakeFiles/parallel.dir/clean
+clean: CMakeFiles/parallel_random.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -102,30 +102,30 @@ CMakeFiles/sequential.dir/clean:
 .PHONY : CMakeFiles/sequential.dir/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/parallel.dir
+# Target rules for target CMakeFiles/parallel_random.dir
 
 # All Build rule for target.
-CMakeFiles/parallel.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\parallel.dir\build.make CMakeFiles/parallel.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\parallel.dir\build.make CMakeFiles/parallel.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=H:\Code\ECE1747\ECE1747-Projects\cmake-build-debug\CMakeFiles --progress-num=1,2 "Built target parallel"
-.PHONY : CMakeFiles/parallel.dir/all
+CMakeFiles/parallel_random.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\parallel_random.dir\build.make CMakeFiles/parallel_random.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\parallel_random.dir\build.make CMakeFiles/parallel_random.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=H:\Code\ECE1747\ECE1747-Projects\cmake-build-debug\CMakeFiles --progress-num=1,2 "Built target parallel_random"
+.PHONY : CMakeFiles/parallel_random.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/parallel.dir/rule: cmake_check_build_system
+CMakeFiles/parallel_random.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start H:\Code\ECE1747\ECE1747-Projects\cmake-build-debug\CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/parallel.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/parallel_random.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start H:\Code\ECE1747\ECE1747-Projects\cmake-build-debug\CMakeFiles 0
-.PHONY : CMakeFiles/parallel.dir/rule
+.PHONY : CMakeFiles/parallel_random.dir/rule
 
 # Convenience name for target.
-parallel: CMakeFiles/parallel.dir/rule
-.PHONY : parallel
+parallel_random: CMakeFiles/parallel_random.dir/rule
+.PHONY : parallel_random
 
 # clean rule for target.
-CMakeFiles/parallel.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\parallel.dir\build.make CMakeFiles/parallel.dir/clean
-.PHONY : CMakeFiles/parallel.dir/clean
+CMakeFiles/parallel_random.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\parallel_random.dir\build.make CMakeFiles/parallel_random.dir/clean
+.PHONY : CMakeFiles/parallel_random.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

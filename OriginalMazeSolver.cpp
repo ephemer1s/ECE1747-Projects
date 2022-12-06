@@ -315,7 +315,7 @@ int main(int argc, char *argv[])
     }
 
     cout << "========== Summary ==========" << endl;
-    cout << "Brute Force:" << endl;
+    cout << "Random:" << endl;
     cout << "   Distance (units): " << bfDistance << endl;
     cout << "   Time (us):" << usBf.count() << endl;
 
