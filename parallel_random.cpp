@@ -59,6 +59,7 @@ struct maze
     int rows;
     int cols;
     char **matrix;
+//    mutex ** nodelock;
 };
 
 maze myMaze;
@@ -232,20 +233,17 @@ struct posArg {
 
 int count = -1;
 
-std::mutex Mutex;
-
 void * randomizedMazeSolver(posArg * pos)
 {
     //Clear o's
     //#pragma omp parallel for
-    std::lock_guard<std::mutex> guard(Mutex);
-    for(int k=0; k<myMaze.rows; k++){
-        for(int h=0; h<myMaze.cols; h++){
-            if(myMaze.matrix[k][h] == 'o'){
-                myMaze.matrix[k][h] = ' ';
-            }
-        }
-    }
+//    for(int k=0; k<myMaze.rows; k++){
+//        for(int h=0; h<myMaze.cols; h++){
+//            if(myMaze.matrix[k][h] == 'o'){
+//                myMaze.matrix[k][h] = ' ';
+//            }
+//        }
+//    }
 
     int x = pos->X;
     int y = pos->Y;
@@ -447,46 +445,53 @@ void * randomizedMazeSolver(posArg * pos)
 
     while (!coordStack1.empty()){
         count++;
-        if(myMaze.matrix[coordStack1.top().getY()][coordStack1.top().getX()] != 'S'){
-            if(coordStack1.top().getDir() == RIGHT){
-                myMaze.matrix[coordStack1.top().getY()][coordStack1.top().getX()] = '>';
-            } else if(coordStack1.top().getDir() == LEFT){
-                myMaze.matrix[coordStack1.top().getY()][coordStack1.top().getX()] = '<';
-            }else if(coordStack1.top().getDir() == UP){
-                myMaze.matrix[coordStack1.top().getY()][coordStack1.top().getX()] = '^';
-            }else{
-                myMaze.matrix[coordStack1.top().getY()][coordStack1.top().getX()] = 'v';
-            }
-        }
+//        if(myMaze.matrix[coordStack1.top().getY()][coordStack1.top().getX()] != 'S'){
+//            if(coordStack1.top().getDir() == RIGHT){
+//                myMaze.matrix[coordStack1.top().getY()][coordStack1.top().getX()] = '>';
+//            } else if(coordStack1.top().getDir() == LEFT){
+//                myMaze.matrix[coordStack1.top().getY()][coordStack1.top().getX()] = '<';
+//            }else if(coordStack1.top().getDir() == UP){
+//                myMaze.matrix[coordStack1.top().getY()][coordStack1.top().getX()] = '^';
+//            }else{
+//                myMaze.matrix[coordStack1.top().getY()][coordStack1.top().getX()] = 'v';
+//            }
+//        }
         coordStack1.pop();
     }
 }
 
 
 int thread_depth = 1;
-int current_depth = 0;
+int current_depth = 1;
 
 void parallelRandom(int j, int i){
     if(current_depth > thread_depth){return ;}
     current_depth++;
-    posArg *pos = nullptr;
-    pos->Y = j;
-    pos->X = i;
-    pthread_t threads[4];
-    for (int i = 0; i < 4; i++) {
-        int rc = pthread_create(&threads[i], NULL, reinterpret_cast<void *(*)(void *)>(randomizedMazeSolver), (void*)pos);
+    posArg pos = {i, j};
+    int threadNum = current_depth * 4;
+    pthread_t threads[threadNum];
+    for (int i = 0; i < threadNum; i++) {
+        int rc = pthread_create(&threads[i], NULL, reinterpret_cast<void *(*)(void *)>(randomizedMazeSolver), (void*)&pos);
         if (rc) {
             std::cout << "Error:unable to create thread," << rc << std::endl;
             exit(-1);
         }
     }
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < threadNum; i++) {
         pthread_join(threads[i], NULL);
     }
-    parallelRandom(j + 1, i);
-    parallelRandom(j - 1, i);
-    parallelRandom(j, i + 1);
-    parallelRandom(j, i - 1);
+    if(myMaze.matrix[j + 1][i] != '*'){
+        parallelRandom(j + 1, i);
+    }
+    if(myMaze.matrix[j - 1][i] != '*'){
+        parallelRandom(j - 1, i);
+    }
+    if(myMaze.matrix[j][i + 1] != '*'){
+        parallelRandom(j, i + 1);
+    }
+    if(myMaze.matrix[j][i - 1] != '*'){
+        parallelRandom(j, i - 1);
+    }
 }
 
 int main(int argc, char *argv[]) {
@@ -548,8 +553,9 @@ int main(int argc, char *argv[]) {
     }
 
     cout << "=> Starting: brute force algorithm." << endl;
+    //int bfDistance =
     auto startTimeBf = std::chrono::steady_clock::now();
-    int bfDistance = randomizedMazeSolver(x, y);
+    parallelRandom(x, y);
     auto endTimeBf = std::chrono::steady_clock::now();
     auto usBf = std::chrono::duration_cast<std::chrono::microseconds>(endTimeBf - startTimeBf);
 
@@ -571,7 +577,7 @@ int main(int argc, char *argv[]) {
 
     cout << "========== Summary ==========" << endl;
     cout << "Random:" << endl;
-    cout << "   Distance (units): " << bfDistance << endl;
+//    cout << "   Distance (units): " << bfDistance << endl;
     cout << "   Time (us):" << usBf.count() << endl;
 
     return 0;
