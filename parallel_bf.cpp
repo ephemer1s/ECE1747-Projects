@@ -74,7 +74,7 @@ maze myMaze;
 
 
 const int MAX_DEPTH = 1; // recursive depth, TODO: make this a arg
-const int MAX_THREADS = 4;
+const int MAX_THREADS = 1;
 pthread_t threads [MAX_THREADS];
 
 int curthread = 0;
@@ -100,7 +100,8 @@ void* bruteForceMazeSolver(void* arg)
 	int curr_x = params->x; // int curr_x = j;
     int curr_y = params->y; // int curr_y = i;
 	int curr_depth = params->depth;
-    stack<char> moves = params->moves;
+    stack<char> moves;
+    moves = params->moves;
     
     // int count = 0;
     // int distance = 0;
@@ -147,9 +148,9 @@ void* bruteForceMazeSolver(void* arg)
 					cout << "Error:unable to create thread," << response << endl;
 					exit(-1);
 					} 
-					// else {
-					// 	cout << "Thread " << curthread << " created successfully" << endl;
-					// }
+					else {
+						cout << "Thread " << curthread << " created successfully" << endl;
+					}
 					thread_idx.unlock();
 				}
 			}
@@ -173,9 +174,9 @@ void* bruteForceMazeSolver(void* arg)
 					cout << "Error:unable to create thread," << response << endl;
 					exit(-1);
 					} 
-					// else {
-					// 	cout << "Thread " << curthread << " created successfully" << endl;
-					// }
+					else {
+						cout << "Thread " << curthread << " created successfully" << endl;
+					}
 					thread_idx.unlock();
 				}
 			}
@@ -199,9 +200,9 @@ void* bruteForceMazeSolver(void* arg)
 					cout << "Error:unable to create thread," << response << endl;
 					exit(-1);
 					} 
-					// else {
-					// 	cout << "Thread " << curthread << " created successfully" << endl;
-					// }
+					else {
+						cout << "Thread " << curthread << " created successfully" << endl;
+					}
 					thread_idx.unlock();
 				}
 			}
@@ -217,6 +218,7 @@ void* bruteForceMazeSolver(void* arg)
     		if(myMaze.matrix[curr_x][curr_y] == 'F'){
 				lock_guard<mutex> guard(finalmoves_lock);
 				final_moves = moves;
+				cout << "Found the exit!" << endl;
     			pthread_exit(NULL);
     		}
     		moves.push('r');
@@ -232,6 +234,7 @@ void* bruteForceMazeSolver(void* arg)
     		if(myMaze.matrix[curr_x][curr_y] == 'F'){
     			lock_guard<mutex> guard(finalmoves_lock);
 				final_moves = moves;
+				cout << "Found the exit!" << endl;
     			pthread_exit(NULL);
     		}
     		moves.push('u');
@@ -247,6 +250,7 @@ void* bruteForceMazeSolver(void* arg)
     		if(myMaze.matrix[curr_x][curr_y] == 'F'){
     			lock_guard<mutex> guard(finalmoves_lock);
 				final_moves = moves;
+				cout << "Found the exit!" << endl;
     			pthread_exit(NULL);
     		}
     		moves.push('d');
@@ -262,6 +266,7 @@ void* bruteForceMazeSolver(void* arg)
     		if(myMaze.matrix[curr_x][curr_y] == 'F'){
     			lock_guard<mutex> guard(finalmoves_lock);
 				final_moves = moves;
+				cout << "Found the exit!" << endl;
     			pthread_exit(NULL);
     		}
     		moves.push('l');
