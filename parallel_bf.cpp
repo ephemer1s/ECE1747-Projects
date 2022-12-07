@@ -77,7 +77,7 @@ const int MAX_THREADS = MAX_DEPTH * 4;
 pthread_t threads [MAX_THREADS];
 int curthread = 0;
 mutex thread_idx;
-stack<char> finalmoves;
+stack<char> final_moves;
 mutex finalmoves_lock;
 struct Params {
 	int x;
@@ -127,7 +127,7 @@ void* bruteForceMazeSolver(void* arg)
 					params[curthread].y = curr_y;
 					params[curthread].depth = curr_depth;
 					params[curthread].moves = moves;
-					params[curthread].moves.append('u');
+					params[curthread].moves.push('u');
 					// create side thread
 					int response = pthread_create(&threads[curthread], NULL, bruteForceMazeSolver, (void *)&params[curthread]);  // tsp(&params);
 					if (response) {
@@ -150,7 +150,7 @@ void* bruteForceMazeSolver(void* arg)
 					params[curthread].y = curr_y;
 					params[curthread].depth = curr_depth;
 					params[curthread].moves = moves;
-					params[curthread].moves.append('d');
+					params[curthread].moves.push('d');
 					// create side thread
 					int response = pthread_create(&threads[curthread], NULL, bruteForceMazeSolver, (void *)&params[curthread]);  // tsp(&params);
 					if (response) {
@@ -173,7 +173,7 @@ void* bruteForceMazeSolver(void* arg)
 					params[curthread].y = curr_y-1;
 					params[curthread].depth = curr_depth;
 					params[curthread].moves = moves;
-					params[curthread].moves.append('l');
+					params[curthread].moves.push('l');
 					// create side thread
 					int response = pthread_create(&threads[curthread], NULL, bruteForceMazeSolver, (void *)&params[curthread]);  // tsp(&params);
 					if (response) {
