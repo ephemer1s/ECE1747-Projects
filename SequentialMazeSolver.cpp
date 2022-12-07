@@ -72,7 +72,7 @@ int main()
 {
 	//required variables
 	ifstream in;
-	in.open("sample_mazes/RANmaze2.txt");
+	in.open("sample_mazes/maze.txt");
 	char line;
 
 	//read the matrix using plain c code, character by character
