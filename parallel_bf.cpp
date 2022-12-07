@@ -276,7 +276,7 @@ void* bruteForceMazeSolver(void* arg)
 
 
     	//try backtracking right
-    	else if (moves.top() == 'l'){
+    	else if (!moves.empty() && moves.top() == 'l'){
     		moves.pop();
     		// count++;
     		// distance--;
@@ -289,7 +289,7 @@ void* bruteForceMazeSolver(void* arg)
     	}
 
     	//try backtracking up
-    	else if (moves.top() == 'd'){
+    	else if (!moves.empty() && moves.top() == 'd'){
     		moves.pop();
     		// count++;
     		// distance--;
@@ -302,7 +302,7 @@ void* bruteForceMazeSolver(void* arg)
     	}
 
     	//try backtracking down
-    	else if (moves.top() == 'u'){
+    	else if (!moves.empty() && moves.top() == 'u'){
     		moves.pop();
     		// count++;
     		// distance--;
@@ -315,7 +315,7 @@ void* bruteForceMazeSolver(void* arg)
     	}
 
     	//try backtracking left
-    	else if (moves.top() == 'r'){
+    	else if (!moves.empty() && moves.top() == 'r'){
     		moves.pop();
     		// count++;
     		// distance--;
