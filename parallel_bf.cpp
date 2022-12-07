@@ -11,6 +11,7 @@
 #include <time.h>
 #include <pthread.h>
 #include <mutex>
+#include <unistd.h>
 
 #ifdef __MACH__
 #include <mach/clock.h>
@@ -73,12 +74,15 @@ maze myMaze;
 
 
 const int MAX_DEPTH = 1; // recursive depth, TODO: make this a arg
-const int MAX_THREADS = MAX_DEPTH * 4;
+const int MAX_THREADS = 4;
 pthread_t threads [MAX_THREADS];
+
 int curthread = 0;
 mutex thread_idx;
+
 stack<char> final_moves;
 mutex finalmoves_lock;
+
 struct Params {
 	int x;
 	int y;
@@ -87,6 +91,8 @@ struct Params {
 };
 // vector<Params> params(num_threads);
 Params params[MAX_THREADS];
+
+mutex debugprint_lock;
 
 void* bruteForceMazeSolver(void* arg)
 {
@@ -98,14 +104,21 @@ void* bruteForceMazeSolver(void* arg)
     
     // int count = 0;
     // int distance = 0;
+	// cout << "curr_x: " << curr_x << "curr_y: " << curr_y << endl;
 
 	// at beginning of a thread, if this is a side thread, mark the curr node as thread number
 	if (curthread > 0) {
 		lock_guard<mutex> guard(myMaze.nodelock[curr_x][curr_y]);
-		myMaze.matrix[curr_x][curr_y] = 'a' + curthread; // for preventing the 15th thread create a "F"
+		myMaze.matrix[curr_x][curr_y] = 'S'; // for preventing the 15th thread create a "F"
 	}
 
     while(myMaze.matrix[curr_x][curr_y] != 'F'){
+		// DEBUG PRINT
+		debugprint_lock.lock();
+		cout << "curr_thread: " << curr_depth << endl;
+		cout << "curr_x: " << curr_x << "curr_y: " << curr_y << endl;
+		debugprint_lock.unlock();
+
 		// if has vacant thread
 		if (curthread < MAX_THREADS - 1){
 			char mainpath = 'n'; // no main path
@@ -125,7 +138,7 @@ void* bruteForceMazeSolver(void* arg)
 					// get sidepath params
 					params[curthread].x = curr_x-1;
 					params[curthread].y = curr_y;
-					params[curthread].depth = curr_depth;
+					params[curthread].depth = curthread;
 					params[curthread].moves = moves;
 					params[curthread].moves.push('u');
 					// create side thread
@@ -134,6 +147,9 @@ void* bruteForceMazeSolver(void* arg)
 					cout << "Error:unable to create thread," << response << endl;
 					exit(-1);
 					} 
+					// else {
+					// 	cout << "Thread " << curthread << " created successfully" << endl;
+					// }
 					thread_idx.unlock();
 				}
 			}
@@ -148,7 +164,7 @@ void* bruteForceMazeSolver(void* arg)
 					// get sidepath params
 					params[curthread].x = curr_x+1;
 					params[curthread].y = curr_y;
-					params[curthread].depth = curr_depth;
+					params[curthread].depth = curthread;
 					params[curthread].moves = moves;
 					params[curthread].moves.push('d');
 					// create side thread
@@ -157,6 +173,9 @@ void* bruteForceMazeSolver(void* arg)
 					cout << "Error:unable to create thread," << response << endl;
 					exit(-1);
 					} 
+					// else {
+					// 	cout << "Thread " << curthread << " created successfully" << endl;
+					// }
 					thread_idx.unlock();
 				}
 			}
@@ -171,7 +190,7 @@ void* bruteForceMazeSolver(void* arg)
 					// get sidepath params
 					params[curthread].x = curr_x;
 					params[curthread].y = curr_y-1;
-					params[curthread].depth = curr_depth;
+					params[curthread].depth = curthread;
 					params[curthread].moves = moves;
 					params[curthread].moves.push('l');
 					// create side thread
@@ -180,6 +199,9 @@ void* bruteForceMazeSolver(void* arg)
 					cout << "Error:unable to create thread," << response << endl;
 					exit(-1);
 					} 
+					// else {
+					// 	cout << "Thread " << curthread << " created successfully" << endl;
+					// }
 					thread_idx.unlock();
 				}
 			}
@@ -195,7 +217,7 @@ void* bruteForceMazeSolver(void* arg)
     		if(myMaze.matrix[curr_x][curr_y] == 'F'){
 				lock_guard<mutex> guard(finalmoves_lock);
 				final_moves = moves;
-    			break;
+    			pthread_exit(NULL);
     		}
     		moves.push('r');
 			lock_guard<mutex> guard(myMaze.nodelock[curr_x][curr_y]);
@@ -210,7 +232,7 @@ void* bruteForceMazeSolver(void* arg)
     		if(myMaze.matrix[curr_x][curr_y] == 'F'){
     			lock_guard<mutex> guard(finalmoves_lock);
 				final_moves = moves;
-    			break;
+    			pthread_exit(NULL);
     		}
     		moves.push('u');
 			lock_guard<mutex> guard(myMaze.nodelock[curr_x][curr_y]);
@@ -225,7 +247,7 @@ void* bruteForceMazeSolver(void* arg)
     		if(myMaze.matrix[curr_x][curr_y] == 'F'){
     			lock_guard<mutex> guard(finalmoves_lock);
 				final_moves = moves;
-    			break;
+    			pthread_exit(NULL);
     		}
     		moves.push('d');
 			lock_guard<mutex> guard(myMaze.nodelock[curr_x][curr_y]);
@@ -240,7 +262,7 @@ void* bruteForceMazeSolver(void* arg)
     		if(myMaze.matrix[curr_x][curr_y] == 'F'){
     			lock_guard<mutex> guard(finalmoves_lock);
 				final_moves = moves;
-    			break;
+    			pthread_exit(NULL);
     		}
     		moves.push('l');
 			lock_guard<mutex> guard(myMaze.nodelock[curr_x][curr_y]);
@@ -301,14 +323,25 @@ void* bruteForceMazeSolver(void* arg)
     	}
 
     	else{
-    		// cout << "Error: Maze Unsolvable" << endl;
+    		cout << "Error: Maze Unsolvable" << endl;
 			// seems like we do not need to end thread here.
-    		break;
+    		// break;
+			pthread_exit(NULL);
     	}
 
     	// if(count > 500){
     	// 	break;
     	// }
+
+		// DEBUG PRINT MAZE
+		// debugprint_lock.lock();
+		// for(int i=0; i<myMaze.rows; i++)
+		// {
+		// 	for(int j=0; j<myMaze.cols; j++)
+		// 		cout << myMaze.matrix[i][j];
+		// 	cout << endl;
+		// }
+		// debugprint_lock.unlock();
     }
 
     //Clear X's, moved to main
@@ -381,6 +414,9 @@ int main()
 		cout << "Error: unable to create thread, " << response << endl;
 		exit(-1);
 	}
+	// else {
+	// 	cout << "Thread " << curthread << " created successfully" << endl;
+	// }
 
 	// close threads
 	for (int i = 0; i < curthread + 1; i++) {
