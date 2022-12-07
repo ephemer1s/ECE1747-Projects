@@ -1,0 +1,3 @@
+parallel_bf.cpp line 222
+if we find a exit, should all the threads terminates?
+create a terminate flag, and protect it, when while loop begins, read flag, if true, terminate thread.
