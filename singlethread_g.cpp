@@ -9,6 +9,8 @@
 #include <stack>
 #include <stdlib.h>
 #include <time.h>
+#include <pthread.h>
+#include <mutex>
 
 #ifdef __MACH__
 #include <mach/clock.h>
@@ -59,7 +61,7 @@ struct Params
 const int MAX_THREADS = 4;
 pthread_t threads[MAX_THREADS];
 Params params[MAX_THREADS];
-int curr_threads = 0;
+int curr_thread = 0;
 int dest_x, dest_y = 0;
 
 
@@ -315,8 +317,8 @@ int main()
 			if( myMaze.matrix[i][j] == 'S' ){
 				// x=j;
 				// y=i;
-				params[0].x = j;
-				params[0].y = i;
+				params[0].x = i;
+				params[0].y = j;
 			}
 			//Clear o's and find F
 			else if(myMaze.matrix[i][j] == 'o'){
@@ -333,18 +335,18 @@ int main()
 
 	double gStart = getUnixTime();
 	// int gDistance = greedyMazeSolver(x,y);
-	response = pthread_create(&threads[0], NULL, greedyMazeSolver, (void *)&params[0]);
+	int response = pthread_create(&threads[0], NULL, greedyMazeSolver, (void *)&params[0]);
 	if (response) {
 		cout << "Error:unable to create thread," << response << endl;
 		exit(-1);
 	} 
 	else {
-		cout << "Thread " << curthread << " created successfully" << endl;
+		cout << "Thread " << curr_thread << " created successfully" << endl;
 	}
 	double gStop = getUnixTime();
 	cout << gStart << "  " << gStop << endl<< endl;
 	double gTime = gStop-gStart; // CLOCKS_PER_SEC * 1000.0;
-	cout << "Greedy distance: " << gDistance << " units away!" << endl << endl;
+	// cout << "Greedy distance: " << gDistance << " units away!" << endl << endl;
 	cout << "Greedy time: " << gTime << " ms" << endl << endl;
 
 	//Print Greedy Maze
