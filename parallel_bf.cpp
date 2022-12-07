@@ -382,11 +382,20 @@ int main()
 		exit(-1);
 	}
 
+	// close threads
+	for (int i = 0; i < curthread + 1; i++) {
+		pthread_join(threads[i], NULL);
+	}
+
 	double bfStop = getUnixTime();
 	cout << bfStart << "  " << bfStop << endl<< endl;
 	double bfTime = bfStop-bfStart; // CLOCKS_PER_SEC * 1000.0;
 	// cout << "Brute force distance: " << bfDistance << " units away!" << endl << endl;
 	cout << "Brute force time: " << bfTime << " ms" << endl << endl;
+
+
+	// clean Brute Force Maze
+	// ...
 
 	//Print Brute Force Maze
 	for(int i=0; i<myMaze.rows; i++)
