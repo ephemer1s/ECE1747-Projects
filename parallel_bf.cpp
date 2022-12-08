@@ -85,6 +85,9 @@ mutex finalmoves_lock;
 
 double gStart;
 
+int term = 0;
+mutex terminate_lock;
+
 struct Params {
 	int x;
 	int y;
@@ -108,6 +111,11 @@ void* bruteForceMazeSolver(void* arg)
     // int count = 0;
     // int distance = 0;
 	// cout << "curr_x: " << curr_x << "curr_y: " << curr_y << endl;
+
+	if (term == 1){
+		pthread_exit(NULL);
+	}
+
 
 	// at beginning of a thread, if this is a side thread, mark the curr node as thread number
 	if (curthread > 0) {
@@ -219,6 +227,7 @@ void* bruteForceMazeSolver(void* arg)
     		curr_y++;
     		if(myMaze.matrix[curr_x][curr_y] == 'F'){
 				lock_guard<mutex> guard(finalmoves_lock);
+				term = 1;
 				final_moves = moves;
 				double gStop = getUnixTime();
 				cout << "Found the exit!" << gStop-gStart << endl;
@@ -236,6 +245,7 @@ void* bruteForceMazeSolver(void* arg)
     		curr_x--;
     		if(myMaze.matrix[curr_x][curr_y] == 'F'){
     			lock_guard<mutex> guard(finalmoves_lock);
+				term = 1;
 				final_moves = moves;
 				double gStop = getUnixTime();
 				cout << "Found the exit!" << gStop-gStart << endl;
@@ -253,6 +263,7 @@ void* bruteForceMazeSolver(void* arg)
     		curr_x++;
     		if(myMaze.matrix[curr_x][curr_y] == 'F'){
     			lock_guard<mutex> guard(finalmoves_lock);
+				term = 1;
 				final_moves = moves;
 				double gStop = getUnixTime();
 				cout << "Found the exit!" << gStop-gStart << endl;
@@ -270,6 +281,7 @@ void* bruteForceMazeSolver(void* arg)
     		curr_y--;
     		if(myMaze.matrix[curr_x][curr_y] == 'F'){
     			lock_guard<mutex> guard(finalmoves_lock);
+				term = 1;
 				final_moves = moves;
 				double gStop = getUnixTime();
 				cout << "Found the exit!" << gStop-gStart << endl;
