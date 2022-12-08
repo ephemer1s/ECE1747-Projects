@@ -72,7 +72,7 @@ int main()
 {
 	//required variables
 	ifstream in;
-	in.open("sample_mazes/maze.txt");
+	in.open("sample_mazes/39.txt");
 	char line;
 
 	//read the matrix using plain c code, character by character
@@ -292,9 +292,9 @@ int bruteForceMazeSolver(int i, int j)
     		break;
     	}
 
-    	if(count > 500){
-    		break;
-    	}
+    	// if(count > 500){
+    	// 	break;
+    	// }
     }
 
     //Clear X's
@@ -498,9 +498,9 @@ int greedyMazeSolver(int x, int y)
     		break;
     	}
 
-		if(count > 500){
-    		break;
-    	}
+		// if(count > 500){
+    	// 	break;
+    	// }
 
 	}
 	//Clear X's
