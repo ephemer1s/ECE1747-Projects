@@ -430,7 +430,7 @@ int main()
 	// cout << "current x : " << x << endl << endl;
 	// cout << "current y : " << y << endl << endl;
 
-	double gStart = getUnixTime();
+	gStart = getUnixTime();
 	// int bfDistance = bruteForceMazeSolver(x, y);
 	int response = pthread_create(&threads[0], NULL, bruteForceMazeSolver, (void *)&params[0]);
 	if (response) {
