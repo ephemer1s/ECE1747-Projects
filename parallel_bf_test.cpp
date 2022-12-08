@@ -397,8 +397,8 @@ int main()
 	// cout << "Reading a " << myMaze.rows << " by " << myMaze.cols << " matrix." << endl;
 
 
-	myMaze.rows = 79;
-	myMaze.cols = 80;
+	myMaze.rows = 20;
+	myMaze.cols = 20;
 	char maze_in[20][21] = {
 		"********************",
 		"*******S    ********",
@@ -421,6 +421,8 @@ int main()
 		"*********      *****",
 		"********************",
 	};
+    // myMaze.rows = 79;
+	// myMaze.cols = 79;
     // char maze_in[79][80] = {
     //     "*******************************************************************************",
     //     "*   *     *           *               *   *             *           *     *   *",
