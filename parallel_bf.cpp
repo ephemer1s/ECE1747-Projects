@@ -83,6 +83,8 @@ mutex thread_idx;
 stack<char> final_moves;
 mutex finalmoves_lock;
 
+double gStart;
+
 struct Params {
 	int x;
 	int y;
@@ -218,8 +220,9 @@ void* bruteForceMazeSolver(void* arg)
     		if(myMaze.matrix[curr_x][curr_y] == 'F'){
 				lock_guard<mutex> guard(finalmoves_lock);
 				final_moves = moves;
-				cout << "Found the exit!" << endl;
-    			pthread_exit(NULL);
+				double gStop = getUnixTime();
+				cout << "Found the exit!" << gStop-gStart << endl;
+    			exit(-1);
     		}
     		moves.push('r');
 			lock_guard<mutex> guard(myMaze.nodelock[curr_x][curr_y]);
@@ -234,8 +237,9 @@ void* bruteForceMazeSolver(void* arg)
     		if(myMaze.matrix[curr_x][curr_y] == 'F'){
     			lock_guard<mutex> guard(finalmoves_lock);
 				final_moves = moves;
-				cout << "Found the exit!" << endl;
-    			pthread_exit(NULL);
+				double gStop = getUnixTime();
+				cout << "Found the exit!" << gStop-gStart << endl;
+    			exit(-1);
     		}
     		moves.push('u');
 			lock_guard<mutex> guard(myMaze.nodelock[curr_x][curr_y]);
@@ -250,8 +254,9 @@ void* bruteForceMazeSolver(void* arg)
     		if(myMaze.matrix[curr_x][curr_y] == 'F'){
     			lock_guard<mutex> guard(finalmoves_lock);
 				final_moves = moves;
-				cout << "Found the exit!" << endl;
-    			pthread_exit(NULL);
+				double gStop = getUnixTime();
+				cout << "Found the exit!" << gStop-gStart << endl;
+    			exit(-1);
     		}
     		moves.push('d');
 			lock_guard<mutex> guard(myMaze.nodelock[curr_x][curr_y]);
@@ -266,8 +271,9 @@ void* bruteForceMazeSolver(void* arg)
     		if(myMaze.matrix[curr_x][curr_y] == 'F'){
     			lock_guard<mutex> guard(finalmoves_lock);
 				final_moves = moves;
-				cout << "Found the exit!" << endl;
-    			pthread_exit(NULL);
+				double gStop = getUnixTime();
+				cout << "Found the exit!" << gStop-gStart << endl;
+    			exit(-1);
     		}
     		moves.push('l');
 			lock_guard<mutex> guard(myMaze.nodelock[curr_x][curr_y]);
@@ -412,7 +418,7 @@ int main()
 	// cout << "current x : " << x << endl << endl;
 	// cout << "current y : " << y << endl << endl;
 
-	double bfStart = getUnixTime();
+	double gStart = getUnixTime();
 	// int bfDistance = bruteForceMazeSolver(x, y);
 	int response = pthread_create(&threads[0], NULL, bruteForceMazeSolver, (void *)&params[0]);
 	if (response) {
@@ -428,11 +434,11 @@ int main()
 		pthread_join(threads[i], NULL);
 	}
 
-	double bfStop = getUnixTime();
-	cout << bfStart << "  " << bfStop << endl<< endl;
-	double bfTime = bfStop-bfStart; // CLOCKS_PER_SEC * 1000.0;
+	double gStop = getUnixTime();
+	cout << gStart << "  " << gStop << endl<< endl;
+	double gTime = gStop-gStart; // CLOCKS_PER_SEC * 1000.0;
 	// cout << "Brute force distance: " << bfDistance << " units away!" << endl << endl;
-	cout << "Brute force time: " << bfTime << " ms" << endl << endl;
+	cout << "Brute force time: " << gTime << " ms" << endl << endl;
 
 
 	// clean Brute Force Maze
