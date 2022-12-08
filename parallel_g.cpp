@@ -58,7 +58,7 @@ struct Params
 	stack<char> moves;
 };
 
-const int MAX_THREADS = 4;
+const int MAX_THREADS = 8;
 pthread_t threads[MAX_THREADS];
 Params params[MAX_THREADS];
 
@@ -75,8 +75,9 @@ mutex terminate_lock;
 int dest_x, dest_y = 0;
 
 mutex debugprint_lock;
+double gStart;
 
-
+// g++ -pthread -o g parallel_g.cpp
 void* greedyMazeSolver(void* arg)
 {
     //algorithm goes here
@@ -88,7 +89,7 @@ void* greedyMazeSolver(void* arg)
 	int curr_y = params->y;
 	int curr_idx = params->idx;
 	stack<char> moves;
-	moves = params->moves;
+	// moves = params->moves;
 
 	// int dest_x, dist_x = 0;
 	// int dest_y, dist_y = 0;
@@ -273,8 +274,9 @@ void* greedyMazeSolver(void* arg)
 				final_moves = moves;
 				term = 1;
     			finalmoves_lock.unlock();
-
-				cout << "Found the exit!" << endl;
+				double gStop = getUnixTime();
+				cout << "Found the exit!" << gStop-gStart << endl;
+				
     			pthread_exit(NULL);
     		}
     		moves.push(directs[0]);
@@ -295,8 +297,9 @@ void* greedyMazeSolver(void* arg)
 				term = 1;
     			finalmoves_lock.unlock();
 
-				cout << "Found the exit!" << endl;
-    			pthread_exit(NULL);
+				double gStop = getUnixTime();
+				cout << "Found the exit!" << gStop-gStart << endl;
+    			exit(0);
     		}
     		moves.push(directs[1]);
 			lock_guard<mutex> guard(myMaze.nodelock[curr_x][curr_y]);
@@ -316,8 +319,9 @@ void* greedyMazeSolver(void* arg)
 				term = 1;
     			finalmoves_lock.unlock();
 
-				cout << "Found the exit!" << endl;
-    			pthread_exit(NULL);
+				double gStop = getUnixTime();
+				cout << "Found the exit!" << gStop-gStart << endl;
+    			exit(0);
     		}
     		moves.push(directs[2]);
 			lock_guard<mutex> guard(myMaze.nodelock[curr_x][curr_y]);
@@ -338,8 +342,9 @@ void* greedyMazeSolver(void* arg)
 				term = 1;
     			finalmoves_lock.unlock();
 
-				cout << "Found the exit!" << endl;
-    			pthread_exit(NULL);
+				double gStop = getUnixTime();
+				cout << "Found the exit!" << gStop-gStart << endl;
+    			exit(0);
     		}
     		moves.push(directs[3]);
 			lock_guard<mutex> guard(myMaze.nodelock[curr_x][curr_y]);
@@ -430,7 +435,7 @@ int main()
 {
 	//required variables
 	ifstream in;
-	in.open("sample_mazes/maze.txt");
+	in.open("maze/24/02_1.txt");
 	char line;
 
 	//read the matrix using plain c code, character by character
@@ -481,7 +486,8 @@ int main()
 	}
 	
 
-	double gStart = getUnixTime();
+	gStart = getUnixTime();
+	cout << gStart << endl;
 	// int gDistance = greedyMazeSolver(x,y);
 	int response = pthread_create(&threads[0], NULL, greedyMazeSolver, (void *)&params[0]);
 	if (response) {
