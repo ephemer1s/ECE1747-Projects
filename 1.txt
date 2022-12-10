@@ -1,0 +1,99 @@
+***************************************************************************************************
+*     *     *        ooo*x*xxx*xxxxx*xxxSSSx*xxxxx*xxxxxxx*ooo  *ooooooo      *ooooo    *         *
+* *** * *** * *******o*o*x*x*x*x***x*x***x*x***x*x*x*****x*o*o***o*****o*** ***o***o*** *** *** ***
+* * * * *   * * *ooooo*o*x*x*xxx*x*x*xxx*x*xxxxx*xxx*xxxxx*o*ooooo*xxx*ooo* *ooo*x*o*     *   *   *
+* * * * * * * * *o*****o*x*x*****x*x***x*x*****************o*********x***o***o***x*o***** *** *** *
+*   *   * * * * *ooo* *o*xxxxxxxxx*xxx*x*x*ooooooooooooooooo*x*xxxxxxxxx*oooooxxxx*o*ooo*   * * * *
+* ***** * *** * ***o* *o*********x*x***x*x*S*****************x*x*x*****x***********o*o*o*** * * * *
+* *ooo* *         *o* *ooooooo*xxx*xxxxx*xxxxxxxxxxxxx*xxx*xxxxx*x*xxxxxxx*ooooooo*ooo*o*   *   * *
+***o*o*** *********o* *******o***x*******************x*x*x*x*****x*x*******o*****o*****o* ******* *
+*ooo*ooo*   *ooooooo*       *ooo*xxx*ooooo*ooooo*xxx*x*x*xxx*x*xxx*xxx*ooo*ooooo*o*ooo*o* *       *
+*o*****o*** *o*x********* * ***o***x*o***o*o***o*x***x*x*****x*x*******o*o*****o*o*o*o*o* *** *** *
+*ooooo*ooo* *o*x*ooo*ooo* *   *o*xxx*o* *ooo* *o*x*xxx*x*xxxxx*x*ooooo*o*ooooooo*o*o*o*o*     * * *
+*x***o***o* *o***o*o*o*o***** *o*****o* ***** *o*x*x***x*x***x*x*o***o*o*********o*o*o*o******* * *
+*xxx*ooo*o* *ooo*o*ooo*ooooo* *ooooooo*ooo  *ooo*x*xxx*xxx*xxx*x*o*x*o*o*   *   *ooo*o*o*       * *
+***x***o*o***x*o*o*********o* *********o*o***o***S***x*x*******x*o*x*o*o* * *** *****o*o* * ***** *
+*xxx*x*o*ooo*x*ooo*xxxxxxx*o*     *ooooo*ooo*o*xxxxxxx*x*xxxxx*x*o*xxo*o* *   *     *ooo* * *     *
+*x***x*o***o*x*********x***o***** *o*******o*o*x*********x***x*S*o***o*o* *** ***** ******* * *****
+*xxxxx*o* *o*xxxxx*xxx*xxx*o*     *o*     *ooo*xxxxxxxxxxx*x*xxx*ooo*ooo* * * *       *     * *   *
+***x***o* *o*****x*x*x***x*o* *** *o***** *****************x***x***o***** * * * ***** * * *** *** *
+*xxx*ooo*ooo*ooo*xxx*xxxxx*o* *   *ooooo*ooooooooo*xxxxx*xxxxxxxxx*ooooo* * * * *     * *   *   * *
+*x***o***o***o*o*********x*o* *********o*o*******o*x*****x*************o* * * * ******* *** *** * *
+*xxx*o*x*ooooo*ooo*xxxxx*x*o*     *ooo*ooo*   *ooo*xxxxxxxxx*ooooooooooo* *   *       *   * *   * *
+*x***o*x*********o*x*****x*o***** *o*o***** ***o***x*********o*********** *** ******* *** * * *** *
+*x*ooo*xxx*xxxxx*o*xxxxxxx*ooo*   *o*o*ooo  *ooo*xxxxx*ooooooo*         *   *           * * * *   *
+***o***x*x*x*x***o*****x*****o* ***o*o*o*o* *o***x*****o********* * *** *** * *********** * * *** *
+*ooo*x*x*xxx*xxxxooooo*x*ooooo* *ooo*o*o*o* *o*xxx*ooo*o*ooooooo* *   *     * *   *       *     * *
+*o***x*x*****x*******o***o***** *o***o*o*o* *o*x***o*o*o*o*****o*** * ***** *** * * *********** * *
+*ooo*x*x*ooo*x*ooooo*ooooo*xxx*ooo* *o*o*o* *o*x*ooo*o*ooo*xxx*ooo* *     * *   *   *     *   *   *
+*x*o*x*x*o*o***o***o*******x*x*o*** *o*o*o***o***o***o***x***x***o* ***** *** ******* *** * * *****
+*x*o*xxx*o*ooo*o*x*o*xxxxx*x*x*o*ooo*ooo*ooooo*ooo*x*ooo*x*xxx*ooo* *   *   *   *   *   *   *     *
+*x*o*****o***o*o*x*o*****x*x*x*o*o*o***********o***x***o*x*x***o*** * * *** *** *** *** ********* *
+*x*ooooooo*x*ooo*x*ooooo*xxx*x*o*o*ooooo*xxx*x*ooo*xxx*o*xxx*ooo*     *   * *   *   * * *   *     *
+*x*********x*****x*****o*****x*o*o*****o*x*x*x*x*o*x*x*o*****o*********** * * *** * * * * *** *** *
+*x*xxxxx*xxxxxxx*xxx*ooo*xxxxx*ooo*   *o*x*xxx*x*o*x*xxooooooo*ooooooo* * * *     *   *   *   *   *
+*x*x***x*x***x*x*x***o***x***x***** * *o*x*****x*o*********x***o*****o* * * ********* *** * ***** *
+*x*x*xxx*xxx*x*x*x*ooo*xxx*xxxxx*ooo* *o*xxx*xxx*ooooo*xxx*x*ooo*ooo*o*   *         *   * *     * *
+*x*x*x*****x*x*x*x*o***x*********o*o***o*x*x*x*******o***x*x*o***o*o*o*** * *********** * ***** * *
+*x*x*xxxxx*x*x*xxx*o*xxxxxxx*ooooo*ooo*o*x*xxxxx*ooo*ooo*xxx*ooooo*o*ooo* * *           * *   * * *
+*x***x***x*x*x***x*o***x***x*o*******o*o*x*******o*o*x*o*x*********o***o* * * ********* * *** * ***
+*xxx*xxx*xxx*x*x*x*ooo*xxx*xxo*     *o*o*xxx*ooooo*o*x*o*xxxxxxx*x*o*x*o* *   *ooooooo* *     *   *
+***x*****x***x*x*x***o*******o*** ***o*o***x*o*****o*x*o*******x*x*o*x*o*******o*****o* *** ***** *
+*x*xxxxx*xxx*x*xxxxx*ooooooo*ooo*   *ooo*xxx*o*ooooo*x*ooooo*xxxxx*o*x*ooo*ooooo*   *o* *   *     *
+*x*****x*****x*************o***o*** *********o*o*******x***o*x*****o*x***o*o***** ***o* * *** *** *
+*xxx*xxx*xxxxx*xxxxxxxxxxx*ooo*ooo*ooooooooooo*o*ooooo*x*ooo*xxx*oooxxxx*o*o*  ooo*ooo* * * *   * *
+*x*x*x***x***x*x*****x*******o***o*o*x*********o*o***o***o*x*****o*******o*o***o*o*o*** * * *** ***
+*x*x*xxx*x*xxx*x*xxx*xxxxxxx*o*xxooo*x*ooo*xxxxooo*ooo*ooo*x*ooooo*ooooooo*o*ooo*o*o*   * *   *   *
+*x*x***x*x*****x*x*********x*o*x*******o*o*********o***o***x*o*****o*******o*o***o*o* *** * * *** *
+*x*x*xxx*xxxxx*x*xxxxxxxxx*x*o*xxx*ooo*o*ooooooooo*ooooo*xxx*ooooo*ooo*ooo*ooo* *o*o* * * * *   * *
+*x*x*x***x***x*x*****x***x*x*o*****o*o*o*********o*******x*******o***o*o*o***** *o*o* * * *** * * *
+*x*x*xxx*x*xxx*xxxxx*xxx*x*x*ooooooo*oooxxxx*xxx*o*xxxxx*x*ooooo*o*x*ooo*o*ooooooo*o*   *   * * * *
+*x*x***x***x*x*****x***x***x***************x***x*o*x*****x*o***o*o*x*****o*o*******o*** *** * *****
+*x*xxx*xxx*x*xxxxx*xxxxx*xxx*xxxxxxx*x*ooo*xxx*x*o*x*xxxxx*ooo*ooo*xxxxx*ooo*xxxxx*ooo* *   *     *
+*x***x***x*x*********x***x*x***x***x*x*o*o***x*x*o*x*x*******o*********x*****x*******o* * ***** * *
+*x*x*xxxxx*x*xxxxxxxxx*xxx*xxxxx*xxxxx*o*ooo*x*x*o*xxx*ooo*ooo*xxxxxxxxxxxxx*x*xxxxx*o* *   *   * *
+*x*x*******x*x*********x***x*********x*o***o*x*x*o*x***o*o*o***x***********x*x*x*x*x*o***** * *** *
+*x*xxxxxxx*xxxxxxxxx*x*xxx*x*xxx*xxx*x*ooo*o*x*x*o*x*ooo*ooo*xxxxxxxxxxxxx*x*xxx*x*x*ooooo*   *x* *
+*x*x***x*x*********x*x***x***x*x*x*x*****o*o*x*x*o***o*******x***********x*x*****x*x*****o*****x* *
+*x*xxx*x*xxx*xxxxxxx*xxx*x*xxx*xxx*xxxxx*o*o*xxx*oooooxxxxxx*xxxxxxxxxxx*x*xxxxxxx*x*ooooo*xxxxx* *
+*x***x*x***x*x*********x*x*x***********x*o*o***x***********x*************x*********x*o***x*x*x*x* *
+*xxx*x*x*x*x*xxxxxxx*xxx*x*x*x*xxxxxxxxx*o*ooo*x*ooo*ooooo*xxxxxxx*xxxxx*xxxxxxx*xxx*ooo*x*x*x*x* *
+***x***x*x*x*******x*x***x*x*x*x***x*****o***o*x*o*o*o***o*******x*x***x*x*****x*******o*x***x*** *
+*x*x*xxx*xxx*xxxxxxx*x*xxx*x*x*xxx*x*ooo*ooo*o*x*o*ooo* *o*xxxxx*xxx*xxx*xxx*xxx*ooooooo*xxx*xxx* *
+*x*x*x*****x*******x*x*x***x*x***x***o*o***o*o***o***** *o***x***x*****x*****x***o*x*******x*x*x* *
+*xxx*xxxxx*x*xxxxx*xxx*xxxxxxxxx*x*ooo*ooooo*ooooo*     *ooo*x*xxx*ooo*xxxxx*x*ooo*x*   *x*x*x*x* *
+*x*****x*x*x*x***x*************x*x*o*************** *******o*x*x***o*o*****x*x*o*x*** * *x*x***x* *
+*xxxxx*x*x*xxx*x*x*xxxxxxxxxxx*x*x*ooooo*ooooo* *     *ooooo*xxx*ooo*o*xxx*x*x*o*x*   * *x*xxxxx* *
+*****x*x*x*****x*x*x*********x***x*****o*o***o* * *** *o*********o***o***x*x*x*o*x* *** *x*****x* *
+*xxx*x*x*x*xxxxx*xxx*x*xxx*xxx*xxx*xxx*o*ooo*o*     * *ooo*ooooooo* *ooo*xxxxx*o*x*   * *xxx*xxx* *
+*x***x***x*x*x*******x*x*x*x***x*x***x*o***o*o******* ***o*o******* ***o***x***o*** *** *x*x*x*** *
+*xxxxx*xxx*x*x*xxx*xxxxx*xxx*xxx*xxxxx*ooooo*ooooo*     *o*ooo*x*ooooo*ooo*x*ooo*   *   *x*xxx*   *
+*x*****x***x***x*x*x*********x*****x*************o* *** *o*x*o*x*o***o***o*x*o*** *** ********* ***
+*xxxxxxx*xxx*xxx*x*x*xxxxxxxxx*x*xxx*ooooooo*ooooo*ooo* *o*x*o*x*ooo*ooooo*x*o*   * *         * * *
+*********x***x***x*x*x***x*****x*x***o*****o*o*****o*o* *o***o*x***o*********o* *** ********* * * *
+*xxx*xxx*xxxxx*x*x*x*x*xxx*xxxxx*x*x*o*   *ooo*   *o*o* *o*ooo*xxxxooooooo*ooo*       *   *   *   *
+*x*x*x*x*x*****x*x*x***x*******x*x*x*o*** ******* *o*o***o*o***x*********o*o* ******* * * * ***** *
+*x*xxx*x*xxx*xxx*x*xxxxx*xxx*xxx*xxx*ooo*         *o*ooooo*ooo*xxx*ooooo*ooo*       * * * *   *   *
+*x*****x***x*x*x*x*******x*x*x*x***x***o***** * ***o*********o*****o***o*********** * *** *** * ***
+*xxxxx*xxx*xxx*x*x*xxx*xxx*xxx*xxx*xxx*ooooo* *   *ooo*    ooo*ooo*o*x*ooooooooo*   *   *   * *   *
+*x***x*********x*x*x*x*x*x***********x*****o***** ***o*****o***o*o*o*x*********o* ***** * *** *** *
+*xxx*xxx*xxx*xxx*x*x*xxx*xxxxxxx*xxxxx*xxx*ooooo*ooooo*ooo*ooooo*oooxxxx*xxxxx*o*   *   *   * *   *
+*******x*x*x*x***x*x***********x*x*****x*x*****o*o*****o*o*************x*****x*o*** * ***** * * ***
+*xxxxxxx*x*x*xxx*x*x*xxxxxxxxx*xxx*xxx*x*x*ooooo*ooooo*o*ooooo*ooooo*xxxxx*xxx*ooo* * *     *   * *
+*x*******x*x*x***x*x*x*****x*x*****x*x*x*x*o*********o*o*****o*o***o*****x*x*****o*** * ********* *
+*xxxxxxxxx*xxx*xxx*x*xxxxx*x*x*xxxxx*xxx*x*ooo*  ooo*o*ooo*x*ooo*x*ooooo*xxx*ooooo*   *       *   *
+*x*************x*x*x*x*****x*x*x*x*******x***o***o*o*o*x*o*x*****x*****o***x*o*** * ***** * * * * *
+*xxxxxxxxx*xxx*x*x*x*x*xxxxx*x*x*x*xxxxx*x*x*ooo*o*ooo*x*o*xxx*ooooooooo*xxx*ooo* *     * * *   * *
+*********x*x*x*x***x***x*****x***x***x***x*x***o*o*******o***x*o*********x*****o******* *** ***** *
+*xxx*xxxxxxx*x*x*xxx*xxx*xxx*xxx*xxx*x*xxx*xxx*o*o*ooooo*ooo*ooo*ooo*x*xxxxxxx*o*ooooo*     *   * *
+*x*x***x*******x*x***x***x*****x***x*x*x***x*x*o*o*o***o*x*o*o***o*o*x*x*******o*o***o******* *** *
+*x*xxx*x*xxxxx*x*xxxxx*xxx*xxx*xxxxx*x*x*xxx*x*o*ooo*ooo*x*o*o*xxo*o*xxx*x*ooo*o*o*ooo*         * *
+*x***x***x***x*x*********x*x*x*******x*x***x*x*o*****o*****o*o***o*o***x*x*o*o*o*o*o*** ******* * *
+*x*x*xxxxx*xxx*xxx*xxx*xxx*x*xxx*xxx*xxx*xxx*x*ooo*xxo*xxooo*ooooo*ooo*xxx*o*o*ooo*ooo*   *   *   *
+*x*x*x*****x***x*x*x*x*x*x*x***x*x*x*x***x*******o***o***o***********o*****o*o*******o*** * * *****
+*x*xxx*xxx*xxxxx*xxx*xxx*x*xxx*x*x*xxx*xxxxxxxxx*ooo*ooooo*   *   *ooo*ooooo*ooo*ooooo  *   * *   *
+*x*****x*x*****************x***x*x*********x*x*x***o******* * * * *o***o* *****o*o*********** * * *
+*x*xxxxx*xxx*xxxxxxx*xxxxx*x*xxx*xxxxx*xxx*x*x*x*ooo*     * * * * *ooooo* *   *ooo*           * * *
+*x*x*******x*x*****x*x***x*x*x*******x*x*x***x*x*o*** *** * * * * ********* * ***** *********** * *
+*xxxxxxxxx*xxxxxxx*xxxxx*xxx*xxxxxxxxxxx*xxxxx*x*ooF    *   *   *           *                   * *
+***************************************************************************************************
